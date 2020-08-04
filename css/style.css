@@ -2,20 +2,30 @@
 
 body {
 	margin: 0;
+	background-color: var(--dark-twitch);
 }
 
 p {
 	margin: 0;
+
 }
 
 /* ============ Header and Footer ============ */
 
 header {
+	-webkit-user-select: none;       
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
 	font-family: "Dimitri Swank";
+	text-transform: lowercase;
 	color: white;
 	font-size: 50px;
 
 	background-color: var(--twitch);
+	box-shadow: 0px 3px 10px black;
+
 	padding: 10px;
 }
 
@@ -37,4 +47,5 @@ footer {
 :root {
 	--twitch: #6441a5;
 	--light-twitch: #9146ff;
+	--dark-twitch: #502d91;
 };
