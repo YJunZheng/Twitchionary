@@ -9,5 +9,6 @@ const client = new tmi.Client({
 client.connect();
 
 client.on('message', (channel, tags, message, self) => {
-	console.log(`${tags['display-name']}: ${message}`);
+	document.getElementById("message").innerHTML = 
+		tags['display-name'] + ": " + message;
 });
