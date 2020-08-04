@@ -7,19 +7,55 @@
 	</head>
 	<body>
 		<header>Twitch Pictionary</header>
-		<p id="message">Yo</p>
-		<div id="drawing-container">
-			<!-- the board + colors and tools -->
-		</div>
-		<div id="sidebar">
-			<div id="chat">
-				<!-- chat message -->
-			</div>
-			<div id="options">
-				<!-- options to enable/disable keywords etc -->
+		<div class="center">
+			<div id="main-container">
+				<div id="drawing-container">
+					<!-- the board + colors and tools -->
+				</div>
+				<div id="side-panel">
+					<div id="message-container">
+						<p id="user-name">Chat</p>
+						<p id="user-message"></p>
+					</div>
+					<div id="options-container">
+						<h1>Keywords</h1>
+						<div id="options-grid">
+							<div class="grid-item">
+								<label>Twitch Emotes</label>
+								<input type="checkbox" name="emote" checked>
+								<span class="checkmark"></span>
+							</div>
+							<div class="grid-item">
+								<label>BTTV/FFZ Emotes</label>
+								<input type="checkbox" name="emote" checked>
+								<span class="checkmark"></span>
+							</div>
+							<div class="grid-item">
+								<label>Streamers</label>
+								<input type="checkbox" name="emote" checked>
+								<span class="checkmark"></span>
+							</div>
+							<div class="grid-item">
+								<label>Games</label>
+								<input type="checkbox" name="emote" checked>
+								<span class="checkmark"></span>
+							</div>
+						</div>
+						<div id="time-container">
+							<h1>Time Alloted</h1>
+							<input type="range" min="1" max="300" value="145" class="slider" id="time-slider">
+						</div>
+						<input type="text" id="channel-textfield" name="channelname" placeholder="Channel Name">
+						<div class="center">
+							<button id="new-prompt-button" type="button">New Prompt</button>
+							<button id="reset-button" type="button">Reset</button>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</body>
+	<script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
 	<script type="text/javascript" src="js/tmi.js"></script>
 	<script type="text/javascript" src="js/chat.js"></script>
 </html>
