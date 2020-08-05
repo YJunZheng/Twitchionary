@@ -325,7 +325,7 @@ button:hover  {
 	text-align: center;
 	border-style: hidden;
 	border-radius: 10px;
-	width: 100%;
+	width: calc(100% - 30px);
 	height: 30px;
 	margin-top: 10px;
 	border: 1px solid black;
@@ -339,6 +339,11 @@ button:hover  {
 	cursor: text;
 }
 
+#options-button-container {
+	display: flex;
+	justify-content: space-around;
+}
+
 .options-button {
 	font-size: 18px;
 	font-family: "Fira Code";
@@ -347,7 +352,7 @@ button:hover  {
 	text-align: center;
 	border-style: hidden;
 	border-radius: 10px;
-	width: 45%;
+	width: 200px;
 	margin-top: 20px;
 	padding: 10px;
 	border: 1px solid black;
@@ -366,7 +371,6 @@ button:hover  {
 #reset-button {
 	background-color: var(--muted-red);
 }
-
 
 /* ============ Header and Footer ============ */
 
@@ -459,6 +463,7 @@ footer a {
 	--light-gray: #ebebeb;
 	--muted-red: #ff6464;
 	--muted-green: #64ff64;
+	--muted-blue: #6464ff;
 
 	--red: #FF0000;
 	--orange: #FFA500;
