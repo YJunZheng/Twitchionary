@@ -7,49 +7,51 @@
 	</head>
 	<body>
 		<header>Twitch Pictionary</header>
-		<div class="center">
-			<div id="main-container">
+		<div id="main-container">
+			<div id="drawing-parent">
 				<div id="drawing-container">
-					<!-- the board + colors and tools -->
+
 				</div>
-				<div id="side-panel">
-					<div id="message-container">
-						<p id="user-name">Chat</p>
-						<p id="user-message"></p>
+				<div id="tools-container">
+				</div>
+			</div>
+			<div id="side-panel">
+				<div id="message-container">
+					<p id="user-name"></p>
+					<p id="user-message">Enter The Channel Name Below To Start Tracking Chat</p>
+				</div>
+				<div id="options-container">
+					<h1>Keywords</h1>
+					<div id="options-grid">
+						<div class="grid-item">
+							<label>Twitch Emotes</label>
+							<input type="checkbox" name="emote" checked>
+							<span class="checkmark"></span>
+						</div>
+						<div class="grid-item">
+							<label>BTTV/FFZ Emotes</label>
+							<input type="checkbox" name="emote" checked>
+							<span class="checkmark"></span>
+						</div>
+						<div class="grid-item">
+							<label>Streamers</label>
+							<input type="checkbox" name="emote" checked>
+							<span class="checkmark"></span>
+						</div>
+						<div class="grid-item">
+							<label>Games</label>
+							<input type="checkbox" name="emote" checked>
+							<span class="checkmark"></span>
+						</div>
 					</div>
-					<div id="options-container">
-						<h1>Keywords</h1>
-						<div id="options-grid">
-							<div class="grid-item">
-								<label>Twitch Emotes</label>
-								<input type="checkbox" name="emote" checked>
-								<span class="checkmark"></span>
-							</div>
-							<div class="grid-item">
-								<label>BTTV/FFZ Emotes</label>
-								<input type="checkbox" name="emote" checked>
-								<span class="checkmark"></span>
-							</div>
-							<div class="grid-item">
-								<label>Streamers</label>
-								<input type="checkbox" name="emote" checked>
-								<span class="checkmark"></span>
-							</div>
-							<div class="grid-item">
-								<label>Games</label>
-								<input type="checkbox" name="emote" checked>
-								<span class="checkmark"></span>
-							</div>
-						</div>
-						<div id="time-container">
-							<h1>Time Alloted</h1>
-							<input type="range" min="1" max="300" value="145" class="slider" id="time-slider">
-						</div>
+					<div id="time-container">
+						<h1>Time Allotted</h1>
+						<input type="range" min="1" max="300" value="145" class="slider" id="time-slider">
+					</div>
+					<div class="center">
 						<input type="text" id="channel-textfield" name="channelname" placeholder="Channel Name">
-						<div class="center">
-							<button id="new-prompt-button" type="button">New Prompt</button>
-							<button id="reset-button" type="button">Reset</button>
-						</div>
+						<button class="options-button" id="new-prompt-button" type="button">New Prompt</button>
+						<button class="options-button" id="reset-button" type="button">Reset</button>
 					</div>
 				</div>
 			</div>
