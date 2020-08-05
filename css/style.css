@@ -223,7 +223,7 @@ button:hover  {
 	background-color: var(--twitch);
 	font-size: 20px;
 
-	padding: 10px;
+	padding: 20px;
 	margin-bottom: 30px;
 	height: 90px;
 	border-radius: 20px;
@@ -245,6 +245,7 @@ button:hover  {
 }
 
 #user-message {
+	word-break: break-word;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	-webkit-line-clamp: 2;
