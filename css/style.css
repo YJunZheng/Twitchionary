@@ -101,27 +101,24 @@ button:hover  {
 	border: 1px solid black;
 	outline: none;
 	transition-property: background-color;
-	transition-duration: 0.2s;
+	transition-duration: 0.15s;
 }
 
 .drawing-tool:hover {
 	background-color: var(--light-twitch);
 }
 
-.tool-size {
-	height: 40px;
-	width: 40px;
-	padding: 5px;
+#garbage-tool:hover {
+	background-color: var(--muted-red);
+}
 
-	background-color: white;
-	border-radius: 8px;
-	border: 1px solid black;
-	outline: none;
+.tool-size {
 	transition-property: filter;
-	transition-duration: 0.2s;
+	transition-duration: 0.15s;
 }
 
 .tool-size:hover {
+	background-color: white;
 	filter: brightness(0.7);
 }
 
@@ -363,11 +360,11 @@ button:hover  {
 }
 
 #new-prompt-button {
-	background-color: #64ff64;
+	background-color: var(--muted-green);
 }
 
 #reset-button {
-	background-color: #ff6464;
+	background-color: var(--muted-red);
 }
 
 
@@ -460,6 +457,8 @@ footer a {
 	--light-twitch: #9146ff;
 	--dark-twitch: #462387;
 	--light-gray: #ebebeb;
+	--muted-red: #ff6464;
+	--muted-green: #64ff64;
 
 	--red: #FF0000;
 	--orange: #FFA500;
