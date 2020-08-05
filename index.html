@@ -8,77 +8,79 @@
 	</head>
 	<body>
 		<header>Twitch Pictionary</header>
-		<div id="main-container">
-			<div id="drawing-parent">
-				<div id="drawing-container">
-
+		<div class="center">
+			<div id="main-container">
+				<div id="drawing-parent">
+					<div id="drawing-container">
+						<canvas id="canvas"></canvas>
+					</div>
+					<div id="tools-container">
+						<div id="colors-container">
+							<div>
+								<button class="color-button" id="red-button" type=button></button>
+								<button class="color-button" id="orange-button" type=button></button>
+								<button class="color-button" id="yellow-button" type=button></button>
+								<button class="color-button" id="green-button" type=button></button>
+								<button class="color-button" id="blue-button" type=button></button>
+								<button class="color-button" id="purple-button" type=button></button>
+								<button class="color-button" id="white-button" type=button></button>
+								<button class="color-button" id="dark-gray-button" type=button></button>
+							</div>
+							<div>
+								<button class="color-button" id="dark-red-button" type=button></button>
+								<button class="color-button" id="dark-orange-button" type=button></button>
+								<button class="color-button" id="dark-yellow-button" type=button></button>
+								<button class="color-button" id="dark-green-button" type=button></button>
+								<button class="color-button" id="dark-blue-button" type=button></button>
+								<button class="color-button" id="dark-purple-button" type=button></button>
+								<button class="color-button" id="gray-button" type=button></button>
+								<button class="color-button" id="black-button" type=button></button>
+							</div>
+						</div>
+						<div id="drawing-tool-container">
+							<input type="image" class="drawing-tool" src="./assets/pencil.png">
+							<input type="image" class="drawing-tool" src="./assets/eraser.png">
+							<input type="image" class="drawing-tool" src="./assets/bucket.png">
+							<input type="image" class="drawing-tool" src="./assets/garbage.png">
+						</div>
+						<div id="tool-size-container">
+							<input type="image" class="tool-size" src="./assets/size1.png">
+							<input type="image" class="tool-size" src="./assets/size2.png">
+							<input type="image" class="tool-size" src="./assets/size3.png">
+							<input type="image" class="tool-size" src="./assets/size4.png">
+						</div>
+					</div>
 				</div>
-				<div id="tools-container">
-					<div id="colors-container">
-						<div>
-							<button class="color-button" id="red-button" type=button></button>
-							<button class="color-button" id="orange-button" type=button></button>
-							<button class="color-button" id="yellow-button" type=button></button>
-							<button class="color-button" id="green-button" type=button></button>
-							<button class="color-button" id="blue-button" type=button></button>
-							<button class="color-button" id="purple-button" type=button></button>
-							<button class="color-button" id="white-button" type=button></button>
-							<button class="color-button" id="dark-gray-button" type=button></button>
-						</div>
-						<div>
-							<button class="color-button" id="dark-red-button" type=button></button>
-							<button class="color-button" id="dark-orange-button" type=button></button>
-							<button class="color-button" id="dark-yellow-button" type=button></button>
-							<button class="color-button" id="dark-green-button" type=button></button>
-							<button class="color-button" id="dark-blue-button" type=button></button>
-							<button class="color-button" id="dark-purple-button" type=button></button>
-							<button class="color-button" id="gray-button" type=button></button>
-							<button class="color-button" id="black-button" type=button></button>
-						</div>
+				<div id="side-panel">
+					<div id="message-container">
+						<p id="user-name"></p>
+						<p id="user-message">Enter The Channel Name Below To Start Tracking Chat</p>
 					</div>
-					<div id="drawing-tool-container">
-						<input type="image" class="drawing-tool" src="./assets/pencil.png">
-						<input type="image" class="drawing-tool" src="./assets/eraser.png">
-						<input type="image" class="drawing-tool" src="./assets/bucket.png">
-						<input type="image" class="drawing-tool" src="./assets/garbage.png">
-					</div>
-					<div id="tool-size-container">
-						<input type="image" class="tool-size" src="./assets/size1.png">
-						<input type="image" class="tool-size" src="./assets/size2.png">
-						<input type="image" class="tool-size" src="./assets/size3.png">
-						<input type="image" class="tool-size" src="./assets/size4.png">
-					</div>
-				</div>
-			</div>
-			<div id="side-panel">
-				<div id="message-container">
-					<p id="user-name"></p>
-					<p id="user-message">Enter The Channel Name Below To Start Tracking Chat</p>
-				</div>
-				<div id="options-container">
-					<h1>Keywords</h1>
-					<div id="options-grid">
-						<div class="grid-item">
-							<label><input type="checkbox" name="emote" checked> Twitch Emotes</label>
+					<div id="options-container">
+						<h1>Keywords</h1>
+						<div id="options-grid">
+							<div class="grid-item">
+								<label><input type="checkbox" name="emote" checked> Twitch Emotes</label>
+							</div>
+							<div class="grid-item">
+								<label><input type="checkbox" name="emote" checked> BTTV/FFZ Emotes</label>
+							</div>
+							<div class="grid-item">
+								<label><input type="checkbox" name="emote" checked> Streamers</label>
+							</div>
+							<div class="grid-item">
+								<label><input type="checkbox" name="emote" checked> Video Games</label>
+							</div>
 						</div>
-						<div class="grid-item">
-							<label><input type="checkbox" name="emote" checked> BTTV/FFZ Emotes</label>
+						<div id="time-container">
+							<h1>Time Allotted</h1>
+							<input type="range" min="1" max="300" value="145" class="slider" id="time-slider">
 						</div>
-						<div class="grid-item">
-							<label><input type="checkbox" name="emote" checked> Streamers</label>
+						<div class="center">
+							<input type="text" id="channel-textfield" name="channelname" placeholder="Channel Name">
+							<button class="options-button" id="new-prompt-button" type="button">New Prompt</button>
+							<button class="options-button" id="reset-button" type="button">Reset</button>
 						</div>
-						<div class="grid-item">
-							<label><input type="checkbox" name="emote" checked> Video Games</label>
-						</div>
-					</div>
-					<div id="time-container">
-						<h1>Time Allotted</h1>
-						<input type="range" min="1" max="300" value="145" class="slider" id="time-slider">
-					</div>
-					<div class="center">
-						<input type="text" id="channel-textfield" name="channelname" placeholder="Channel Name">
-						<button class="options-button" id="new-prompt-button" type="button">New Prompt</button>
-						<button class="options-button" id="reset-button" type="button">Reset</button>
 					</div>
 				</div>
 			</div>
