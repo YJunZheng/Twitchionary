@@ -3,6 +3,7 @@
 <html>
 	<head>
 		<title>Twitch Pictionary</title>
+		<link rel="icon" href="assets/pencil.png">
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 	</head>
 	<body>
@@ -13,6 +14,40 @@
 
 				</div>
 				<div id="tools-container">
+					<div id="colors-container">
+						<div>
+							<button class="color-button" id="red-button" type=button></button>
+							<button class="color-button" id="orange-button" type=button></button>
+							<button class="color-button" id="yellow-button" type=button></button>
+							<button class="color-button" id="green-button" type=button></button>
+							<button class="color-button" id="blue-button" type=button></button>
+							<button class="color-button" id="purple-button" type=button></button>
+							<button class="color-button" id="white-button" type=button></button>
+							<button class="color-button" id="dark-gray-button" type=button></button>
+						</div>
+						<div>
+							<button class="color-button" id="dark-red-button" type=button></button>
+							<button class="color-button" id="dark-orange-button" type=button></button>
+							<button class="color-button" id="dark-yellow-button" type=button></button>
+							<button class="color-button" id="dark-green-button" type=button></button>
+							<button class="color-button" id="dark-blue-button" type=button></button>
+							<button class="color-button" id="dark-purple-button" type=button></button>
+							<button class="color-button" id="gray-button" type=button></button>
+							<button class="color-button" id="black-button" type=button></button>
+						</div>
+					</div>
+					<div id="drawing-tool-container">
+						<input type="image" class="drawing-tool" src="./assets/pencil.png">
+						<input type="image" class="drawing-tool" src="./assets/eraser.png">
+						<input type="image" class="drawing-tool" src="./assets/bucket.png">
+						<input type="image" class="drawing-tool" src="./assets/garbage.png">
+					</div>
+					<div id="tool-size-container">
+						<input type="image" class="tool-size" src="./assets/size1.png">
+						<input type="image" class="tool-size" src="./assets/size2.png">
+						<input type="image" class="tool-size" src="./assets/size3.png">
+						<input type="image" class="tool-size" src="./assets/size4.png">
+					</div>
 				</div>
 			</div>
 			<div id="side-panel">
@@ -24,24 +59,16 @@
 					<h1>Keywords</h1>
 					<div id="options-grid">
 						<div class="grid-item">
-							<label>Twitch Emotes</label>
-							<input type="checkbox" name="emote" checked>
-							<span class="checkmark"></span>
+							<label><input type="checkbox" name="emote" checked> Twitch Emotes</label>
 						</div>
 						<div class="grid-item">
-							<label>BTTV/FFZ Emotes</label>
-							<input type="checkbox" name="emote" checked>
-							<span class="checkmark"></span>
+							<label><input type="checkbox" name="emote" checked> BTTV/FFZ Emotes</label>
 						</div>
 						<div class="grid-item">
-							<label>Streamers</label>
-							<input type="checkbox" name="emote" checked>
-							<span class="checkmark"></span>
+							<label><input type="checkbox" name="emote" checked> Streamers</label>
 						</div>
 						<div class="grid-item">
-							<label>Games</label>
-							<input type="checkbox" name="emote" checked>
-							<span class="checkmark"></span>
+							<label><input type="checkbox" name="emote" checked> Video Games</label>
 						</div>
 					</div>
 					<div id="time-container">
