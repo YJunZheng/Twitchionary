@@ -12,7 +12,6 @@ html  {
 body {
 	background-color: var(--dark-twitch);
 	margin: 0;
-	
 }
 
 p {
@@ -29,6 +28,7 @@ button:hover  {
 
 #main-container {
 	display: inline-block;
+	width: calc(100% - 80px); /* Takes away padding */
 	padding: 40px;
 }
 
@@ -38,26 +38,40 @@ button:hover  {
 
 /* ============ Drawing Container ============ */
 
-#drawing-container {
-	width: 800px;
-	height: 600px;
-	display: inline-block;
+#drawing-parent {
 	float: left;
-	margin-right: 30px;
-	margin-bottom: 30px;
-
-	background-color: var(--light-gray);
 	border: 10px solid var(--twitch);
 	border-radius: 20px;
+	margin-right: 30px;
+	margin-bottom: 30px;
+}
+
+#drawing-container {
+	/* the bottom maintains the aspect ratio */
+	width: calc(100vw - 590px);
+	height: calc(56.25vw - 332px);
+
+	background-color: var(--light-gray);
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+
+#tools-container  {
+	width: calc(100vw - 590px);
+	height: 50px;
+
+	background-color: lightgray;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
 }
 
 /* ================ Side Panel =============== */
 
 #side-panel {
 	display: inline-block;
-	float: left;
+	float: right;
 
-	width: 500px;
+	width: 440px;
 }
 
 /* -------------- Chat Messages -------------- */
@@ -83,7 +97,6 @@ button:hover  {
 	font-weight: bold;
 
 	margin-bottom: 4px;
-	
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -109,19 +122,20 @@ button:hover  {
 
 #options-container h1 {
 	font-size: 24px;
+	letter-spacing: 2px;
 
 	text-align: center;
 	text-transform: uppercase;
 	margin: 0;
-	margin-bottom: 8px;
+	margin-bottom: 10px;
 }
 
 #options-container hr {
-	margin-bottom: 16px;
+	margin-bottom: 20px;
 }
 
 #options-grid label {
-	font-size: 20px;
+	font-size: 16px;
 	float: left;
 }
 
@@ -136,14 +150,14 @@ button:hover  {
 
 #options-grid {
 	display: grid;
-  	grid-template-columns: auto auto;
-  	margin-bottom: 10px;
+	grid-template-columns: auto auto;
+	margin-bottom: 10px;
 }
 
 .grid-item {
 	padding-left: 10px;
 	padding-right: 10px;
-	padding-top: 10px;
+	padding-top: 15px;
 }
 
 #time-container {
@@ -176,51 +190,35 @@ button:hover  {
 	cursor: text;
 }
 
-#new-prompt-button {
-	font-size: 22px;
+.options-button {
+	font-size: 18px;
 	font-family: "Fira Code";
-	background-color: #64ff64;
+	font-weight: bold;
 
 	outline: none;
 	text-align: center;
 	border-style: hidden;
 	border-radius: 10px;
-	width: 40%;
-	height: 40px;
+	width: 45%;
 	margin-top: 20px;
-	margin-left: 10px;
-	margin-right: 10px;
+	padding: 10px;
 	border: 1px solid black;
 	transition-property: filter;
 	transition-duration: 0.2s;
 }
 
-#new-prompt-button:hover {
+.options-button:hover {
 	filter: brightness(80%);
+}
+
+#new-prompt-button {
+	background-color: #64ff64;
 }
 
 #reset-button {
-	font-size: 22px;
-	font-family: "Fira Code";
 	background-color: #ff6464;
-
-	outline: none;
-	text-align: center;
-	border-style: hidden;
-	border-radius: 10px;
-	width: 40%;
-	height: 40px;
-	margin-top: 20px;
-	margin-left: 10px;
-	margin-right: 10px;
-	border: 1px solid black;
-	transition-property: filter;
-	transition-duration: 0.2s;
 }
 
-#reset-button:hover {
-	filter: brightness(80%);
-}
 
 /* ============ Header and Footer ============ */
 
@@ -239,6 +237,24 @@ header {
 
 footer {
 	background-color: var(--twitch);
+}
+
+/* ============= Window Resolution =========== */
+
+@media (max-width: 1100px)  {
+	#drawing-container {
+		width: calc(100vw - 100px);
+		height: calc(56.25vw);
+	}
+
+	#tools-container {
+		width: calc(100vw - 100px);
+	}
+
+	#side-panel {
+		width: calc(100vw - 80px);
+		float: left;
+	}
 }
 
 /* ============= Fonts and Colours =========== */
