@@ -408,7 +408,7 @@ footer a {
 
 /* ============= Window Resolution =========== */
 
-@media (max-width: 1100px)  {
+@media (max-width: 1100px) {
 	#drawing-container {
 		width: calc(100vw - 120px);
 		height: calc(56.25vw - 56px);
@@ -425,6 +425,23 @@ footer a {
 
 	#side-panel {
 		width: calc(100vw - 100px);
+	}
+
+	#options-grid {
+		grid-template-columns: auto auto auto;
+	}
+}
+
+@media (max-width: 850px) {
+	#options-grid {
+		grid-template-columns: auto auto;
+	}
+}
+
+@media (max-width: 650px) {
+	#options-grid {
+		text-align: center;
+		grid-template-columns: auto;
 	}
 }
 
