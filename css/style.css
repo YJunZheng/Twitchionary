@@ -13,7 +13,7 @@ body {
 	height: 100%;
 	margin: 0;
 	display: flex;
-  	flex-direction: column;
+	flex-direction: column;
 	background-color: var(--dark-twitch);
 }
 
@@ -327,6 +327,7 @@ button:hover  {
 	border-radius: 10px;
 	width: calc(100% - 30px);
 	margin-top: 10px;
+	margin-bottom: 20px;
 	padding: 6px;
 	border: 1px solid black;
 }
@@ -353,7 +354,6 @@ button:hover  {
 	border-style: hidden;
 	border-radius: 10px;
 	width: 200px;
-	margin-top: 20px;
 	padding: 10px;
 	border: 1px solid black;
 	transition-property: filter;
@@ -372,6 +372,28 @@ button:hover  {
 	background-color: var(--muted-red);
 }
 
+/* ============== Prompt Window ============== */
+
+#prompt-main-center {
+	height: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	text-align: center;
+}
+
+#prompt-container {
+	background-color: var(--light-twitch);
+	color: white;
+	font-size: 30px;
+
+	word-break: break-word;
+	display: inline-block;
+	padding: 20px;
+	border-radius: 10px;
+	margin: 0 auto;
+}
+
 /* ============ Header and Footer ============ */
 
 header {
@@ -387,23 +409,27 @@ header {
 }
 
 footer {
+	color: white;
+	font-size: 24px;
 	font-family: "Dimitri Swank";
 	background-color: var(--twitch);
 	box-shadow: 0 0 20px black;
+	text-transform: lowercase;
 
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 	padding: 10px;
 	flex-shrink: 0;
 }
 
 footer p {
-	color: var(--light-gray);
+	color: white;
 	font-size: 24px;
 }
 
 footer a {
-	color: var(--light-gray);
+	color: white;
 	text-decoration: none;
 }
 
