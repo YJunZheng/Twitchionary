@@ -12,6 +12,9 @@ def get_no_escapes(array):
 
 	return return_array
 
+def get_list(path):
+	return open(path).readlines()
+
 def write_file(path, array):
 	f = open(path, "w")
 	
@@ -20,11 +23,20 @@ def write_file(path, array):
 
 	f.close()
 
-path = "twitch-memes"
+def write_js(array, var_name):
+	f = open("keywords.js", "a")
 
-e = open(path).readlines()
-e = get_no_escapes(e)
-e = get_no_duplicates(e)
-e = get_sorted(e)
+	f.write("var " + var_name + " = [")
 
-write_file(path, e)
+	for i in range(len(array)):
+		f.write('"' + array[i].strip())
+		if not (i + 1 == len(array)):
+			f.write('", ')
+
+	f.write('"];\n')
+	
+write_js(get_list("twitch-emotes"), "twitchEmotes")
+write_js(get_list("bttv-ffz-emotes"), "bttvFFZEmotes")
+write_js(get_list("streamers"), "streamers")
+write_js(get_list("video-games"), "videoGames")
+write_js(get_list("twitch-memes"), "twitchMemes")
