@@ -1,3 +1,9 @@
+$(document).ready(function() {
+	var prompt = "";
+	var promptWindow;
+	localStorage.promptVisibility = "false";
+})
+
 function updatePromptPool(id) {
 	promptPool[id][0] = document.getElementById(id).checked;
 }
@@ -19,15 +25,10 @@ function getPool() {
 function promptPopup() { //occurrs when new prompt button is pressed
 	let pool = getPool();
 	prompt = pool[Math.floor(Math.random() * pool.length)];
-	sessionStorage.setItem('prompt', prompt);
-	console.log(sessionStorage.getItem('prompt'));
+	localStorage.prompt = prompt;
 
 	let params = `scrollbars=no, resizable=no, status=no, location=no,
 		toolbar=no, menubar=no, width=600, height=400, status=no`;
 
-	promptWindow = open('prompt window.html', "Prompt Window", params);
+	promptWindow = window.open('prompt window.html', "Prompt Window", params);
 }
-
-var prompt = "";
-var promptWindow;
-sessionStorage.setItem("visible prompt", "0");
