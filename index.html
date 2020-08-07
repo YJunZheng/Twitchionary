@@ -63,19 +63,19 @@
 						<h1>Prompts</h1>
 						<div id="options-grid">
 							<div class="grid-item">
-								<label><input type="checkbox" name="twitch-emotes" checked>Twitch Emotes</label>
+								<label><input type="checkbox" id="twitch-emotes" onclick="updatePromptPool(this.id)" checked>Twitch Emotes</label>
 							</div>
 							<div class="grid-item">
-								<label><input type="checkbox" name="bttv-ffz-emotes" checked>BTTV/FFZ Emotes</label>
+								<label><input type="checkbox" id="bttv-ffz-emotes" onclick="updatePromptPool(this.id)" checked>BTTV/FFZ Emotes</label>
 							</div>
 							<div class="grid-item">
-								<label><input type="checkbox" name="streamers" checked>Streamers</label>
+								<label><input type="checkbox" id="streamers" onclick="updatePromptPool(this.id)" checked>Streamers</label>
 							</div>
 							<div class="grid-item">
-								<label><input type="checkbox" name="video-games" checked>Video Games</label>
+								<label><input type="checkbox" id="video-games" onclick="updatePromptPool(this.id)" checked>Video Games</label>
 							</div>
 							<div class="grid-item">
-								<label><input type="checkbox" name="twitch-memes" checked>Twitch Memes</label>
+								<label><input type="checkbox" id="twitch-memes" onclick="updatePromptPool(this.id)">Twitch Memes</label>
 							</div>
 						</div>
 						<div id="time-container">
@@ -106,6 +106,7 @@
 	</body>
 	<script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
 	<script type="text/javascript" src="js/tmi.js"></script>
+	<script type="text/javascript" src="assets/keywords/keywords.js"></script>
 	<script type="text/javascript" src="js/chat.js"></script>
 	<script type="text/javascript" src="js/prompt.js"></script>
 	<script type="text/javascript" src="js/confetti.js"></script>
