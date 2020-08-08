@@ -2,6 +2,8 @@ var canvas = document.getElementById('canvas'); //Gets the canvas area
 var ctx = canvas.getContext("2d"); //Sets context for canvas as 2D
 var height = $('#drawing-container').height();
 var width = $('#drawing-container').width();
+const ogHeight = height;
+const ogWidth = width;
 canvas.height = parseInt(height);
 canvas.width = parseInt(width); //Define height and width as whole browser, then set as canvas
 
@@ -29,15 +31,8 @@ const colors = {
 };
 
 $(window).resize(function() {
-
-	var oldCanvas = ctx.getImageData(0, 0, canvas.width, canvas.height);
-
-	var height = $('#drawing-container').height();
-	var width = $('#drawing-container').width();
-	canvas.height = parseInt(height);
-	canvas.width = parseInt(width); 
-	
-	ctx.putImageData(oldCanvas,0,0);
+	height = $('#drawing-container').height();
+	width = $('#drawing-container').width();
 })
 
 $('#canvas').mousedown (()=> {
@@ -51,8 +46,8 @@ $('#canvas').mouseup (()=> {
 
 $('#canvas').mousemove(function move(e) {
 	if (mousePressed){
-		mouse.x = e.pageX - $('#canvas').offset().left; //Get position of mouse
-		mouse.y = e.pageY - $('#canvas').offset().top; //Offset is offset from the parent element, as part of this. 
+		mouse.x = ogWidth / width * (e.pageX - $('#canvas').offset().left); //Get position of mouse
+		mouse.y = ogHeight / height * (e.pageY - $('#canvas').offset().top); //Offset is offset from the parent element, as part of this. 
 	
 		ctx.lineTo(mouse.x, mouse.y); //Draw a line from where the path last started to where the mouse is
 		ctx.stroke(); //Draw a stroke from the two locations
