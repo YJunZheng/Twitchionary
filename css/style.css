@@ -91,16 +91,20 @@ button:hover  {
 
 #drawing-tool-container {
 	display: inline-block;
+	font-size: 0;
 }
 
 #tool-size-container  {
 	display: inline-block;
+	font-size: 0;
 }
 
 .drawing-tool {
 	height: 40px;
 	width: 40px;
-	padding: 5px;
+	padding: 6px;
+	margin-right: 4px;
+	margin-left: 4px;
 
 	background-color: white;
 	border-radius: 8px;
@@ -117,7 +121,9 @@ button:hover  {
 #garbage-tool {
 	height: 40px;
 	width: 40px;
-	padding: 5px;
+	padding: 6px;
+	margin-right: 4px;
+	margin-left: 4px;
 
 	background-color: white;
 	border-radius: 8px;
@@ -145,14 +151,14 @@ button:hover  {
 
 #colors-container {
 	display: inline-block;
-	margin: 5px;
+	font-size: 0;
+	margin: 4px;
 }
 
 .color-button {
 	height: 26px;
 	width: 26px;
 
-	margin: -5px;
 	border: none;
 	outline: none;
 	display: inline-block;
