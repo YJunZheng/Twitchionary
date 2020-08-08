@@ -356,12 +356,13 @@ button:hover  {
 	width: 200px;
 	padding: 10px;
 	border: 1px solid black;
-	transition-property: filter;
+	transition-property: transform box-shadow;
 	transition-duration: 0.2s;
 }
 
 .options-button:hover {
-	filter: brightness(80%);
+	box-shadow: 0 0 10px black;
+	transform: scale(1.05);
 }
 
 #new-prompt-button {
