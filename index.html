@@ -20,37 +20,37 @@
 					<div id="tools-container">
 						<div id="colors-container">
 							<div>
-								<button class="color-button" id="red-button" type=button></button>
-								<button class="color-button" id="orange-button" type=button></button>
-								<button class="color-button" id="yellow-button" type=button></button>
-								<button class="color-button" id="green-button" type=button></button>
-								<button class="color-button" id="blue-button" type=button></button>
-								<button class="color-button" id="purple-button" type=button></button>
-								<button class="color-button" id="white-button" type=button></button>
-								<button class="color-button" id="dark-gray-button" type=button></button>
+								<button class="color-button" id="red-button" onclick="changeColor(this.id)" type=button></button>
+								<button class="color-button" id="orange-button" onclick="changeColor(this.id)" type=button></button>
+								<button class="color-button" id="yellow-button" onclick="changeColor(this.id)" type=button></button>
+								<button class="color-button" id="green-button" onclick="changeColor(this.id)" type=button></button>
+								<button class="color-button" id="blue-button" onclick="changeColor(this.id)" type=button></button>
+								<button class="color-button" id="purple-button" onclick="changeColor(this.id)" type=button></button>
+								<button class="color-button" id="white-button" onclick="changeColor(this.id)" type=button></button>
+								<button class="color-button" id="dark-gray-button" onclick="changeColor(this.id)" type=button></button>
 							</div>
 							<div>
-								<button class="color-button" id="dark-red-button" type=button></button>
-								<button class="color-button" id="dark-orange-button" type=button></button>
-								<button class="color-button" id="dark-yellow-button" type=button></button>
-								<button class="color-button" id="dark-green-button" type=button></button>
-								<button class="color-button" id="dark-blue-button" type=button></button>
-								<button class="color-button" id="dark-purple-button" type=button></button>
-								<button class="color-button" id="gray-button" type=button></button>
-								<button class="color-button" id="black-button" type=button></button>
+								<button class="color-button" id="dark-red-button" onclick="changeColor(this.id)" type=button></button>
+								<button class="color-button" id="dark-orange-button" onclick="changeColor(this.id)" type=button></button>
+								<button class="color-button" id="dark-yellow-button" onclick="changeColor(this.id)" type=button></button>
+								<button class="color-button" id="dark-green-button" onclick="changeColor(this.id)" type=button></button>
+								<button class="color-button" id="dark-blue-button" onclick="changeColor(this.id)" type=button></button>
+								<button class="color-button" id="dark-purple-button" onclick="changeColor(this.id)" type=button></button>
+								<button class="color-button" id="gray-button" onclick="changeColor(this.id)" type=button></button>
+								<button class="color-button" id="black-button" onclick="changeColor(this.id)" type=button></button>
 							</div>
 						</div>
 						<div id="drawing-tool-container">
-							<input type="image" id="pencil-tool" class="drawing-tool" src="./assets/pencil.png">
-							<input type="image" id="eraser-tool" class="drawing-tool" src="./assets/eraser.png">
-							<input type="image" id="bucket-tool" class="drawing-tool" src="./assets/bucket.png">
-							<input type="image" id="garbage-tool" class="drawing-tool" src="./assets/garbage.png">
+							<input type="image" id="pencil-tool" class="drawing-tool" onclick="changeTool(this.id)" src="./assets/pencil.png">
+							<input type="image" id="eraser-tool" class="drawing-tool" onclick="changeTool(this.id)" src="./assets/eraser.png">
+							<input type="image" id="bucket-tool" class="drawing-tool" onclick="changeTool(this.id)" src="./assets/bucket.png">
+							<input type="image" id="garbage-tool" onclick="clearCanvas()" src="./assets/garbage.png">
 						</div>
 						<div id="tool-size-container">
-							<input type="image" class="drawing-tool tool-size" src="./assets/size1.png">
-							<input type="image" class="drawing-tool tool-size" src="./assets/size2.png">
-							<input type="image" class="drawing-tool tool-size" src="./assets/size3.png">
-							<input type="image" class="drawing-tool tool-size" src="./assets/size4.png">
+							<input type="image" class="drawing-tool tool-size" id="size0" onclick="changeStrokeWidth(this.id)" src="./assets/size1.png">
+							<input type="image" class="drawing-tool tool-size" id="size1" onclick="changeStrokeWidth(this.id)" src="./assets/size2.png">
+							<input type="image" class="drawing-tool tool-size" id="size2" onclick="changeStrokeWidth(this.id)" src="./assets/size3.png">
+							<input type="image" class="drawing-tool tool-size" id="size3" onclick="changeStrokeWidth(this.id)" src="./assets/size4.png">
 						</div>
 					</div>
 				</div>
@@ -92,9 +92,7 @@
 			</div>
 		</div>
 		<footer>
-			<p>
-				There's No Uber In Kansas
-			</p>
+			<p>There's No Uber In Kansas</p>
 			<p>Github: <a target="blank" href="https://github.com/JunZheng-dev/Twitch-Pictionary">Twitchionary</a></p>
 		</footer>
 	</body>
@@ -103,5 +101,5 @@
 	<script type="text/javascript" src="assets/keywords/keywords.js"></script>
 	<script type="text/javascript" src="js/chat.js"></script>
 	<script type="text/javascript" src="js/prompt.js"></script>
-	<script type="text/javascript" src="js/draw.js"> </script>
+	<script type="text/javascript" src="js/draw.js"></script>
 </html>
