@@ -2,7 +2,6 @@
 
 html  {
 	font-family: 'Fira Code', monospace;
-	height: 100%;
 	-webkit-user-select: none;       
 	-moz-user-select: none;
 	-ms-user-select: none;
@@ -10,7 +9,7 @@ html  {
 }
 
 body {
-	height: 100%;
+	height: 100vh;
 	margin: 0;
 	display: flex;
 	flex-direction: column;
@@ -56,8 +55,8 @@ button:hover  {
 	/* the bottom maintains the aspect ratio */
 	width: calc(100vw - 650px);
 	height: calc(56.25vw - 366px);
-	max-width: 1120px;
-	max-height: 630px;
+	max-width: 1095.1px;
+	max-height: 616px;
 
 	background-color: white;
 	border-top-left-radius: 10px;
@@ -73,7 +72,7 @@ button:hover  {
 
 #tools-container {
 	width: calc(100vw - 670px);
-	max-width: 1100px;
+	max-width: 1075.1px;
 
 	background-color: lightgray;
 	border-bottom-left-radius: 10px;
