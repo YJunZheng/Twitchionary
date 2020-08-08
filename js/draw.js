@@ -2,10 +2,11 @@ var canvas = document.getElementById('canvas'); //Gets the canvas area
 var ctx = canvas.getContext("2d"); //Sets context for canvas as 2D
 var height = $('#drawing-container').height();
 var width = $('#drawing-container').width();
-const ogHeight = height;
-const ogWidth = width;
-canvas.height = parseInt(height);
-canvas.width = parseInt(width); //Define height and width as whole browser, then set as canvas
+const maxSize = {"x" : 1095, "y" : 616};
+const ogHeight = maxSize["y"];
+const ogWidth = maxSize["x"];
+canvas.height = maxSize["y"];
+canvas.width = maxSize["x"]; //Define height and width as whole browser, then set as canvas
 
 var mouse = {x: 0, y: 0}; //Intialize object to store mouse position
 var mousePressed; //Boolean that checks if mouse is pressed or not to allow drawing
