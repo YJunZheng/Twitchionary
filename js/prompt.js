@@ -1,9 +1,7 @@
-$(document).ready(function() {
-	var prompt = "";
-	var promptWindow;
-	var pool = getPool();
-	localStorage.promptVisibility = "false";
-})
+var prompt = "";
+var promptWindow;
+var pool = getPool();
+localStorage.promptVisibility = "false";
 
 function updatePromptPool(id) {	// updates prompt pool
 	promptPool[id][0] = document.getElementById(id).checked;
@@ -31,7 +29,6 @@ function getPool() {	// get the current pool of keywords
 }
 
 function promptPopup() { // occurrs when new prompt button is pressed
-	let pool = getPool();
 	let temp = pool[Math.floor(Math.random() * pool.length)]	// check dupes
 
 	while (temp == prompt) {
