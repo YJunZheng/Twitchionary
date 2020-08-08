@@ -6,6 +6,8 @@ var client = new tmi.Client({
 	channels: [""]
 });
 
+var paused = false;
+var prompt;
 client.connect();
 
 client.on('message', (channel, tags, message, self) => {
@@ -28,8 +30,14 @@ jQuery("#channel-textfield").on("input propertychange paste", function() {
 	client.connect();
 
 	client.on('message', (channel, tags, message, self) => {
-		document.getElementById("user-name").innerHTML = 
-			tags['display-name'] + ": ";
-		document.getElementById("user-message").innerHTML = message;	
+		if (paused != true) {
+			if (message.toUpperCase() == prompt.toUpperCase()) {
+				document.getElementById("message-container").style.background = "var(--light-twitch)";
+				paused = true;
+			}
+			document.getElementById("user-name").innerHTML = 
+				tags['display-name'] + ": ";
+			document.getElementById("user-message").innerHTML = message;
+		}	
 	});
 });
