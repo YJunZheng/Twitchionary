@@ -30,6 +30,6 @@ jQuery("#channel-textfield").on("input propertychange paste", function() {
 	client.on('message', (channel, tags, message, self) => {
 		document.getElementById("user-name").innerHTML = 
 			tags['display-name'] + ": ";
-		document.getElementById("user-message").innerHTML = message;
+		document.getElementById("user-message").innerHTML = message;	
 	});
 });
