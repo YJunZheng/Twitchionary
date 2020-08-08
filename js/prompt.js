@@ -1,30 +1,44 @@
 $(document).ready(function() {
 	var prompt = "";
 	var promptWindow;
+	var pool = getPool();
 	localStorage.promptVisibility = "false";
 })
 
-function updatePromptPool(id) {
+function updatePromptPool(id) {	// updates prompt pool
 	promptPool[id][0] = document.getElementById(id).checked;
+	pool = getPool();
+
+	if (pool.length == 0) {
+		document.getElementById("new-prompt-button").disabled = true;
+	} else {
+		document.getElementById("new-prompt-button").disabled = false;
+	}
 }
 
-function getPool() {
-	let pool = [];
+function getPool() {	// get the current pool of keywords
+	let returnPool = [];
 
 	for (var i in promptPool) {
 		if (promptPool.hasOwnProperty(i)) {
 			if (promptPool[i][0]) {
-				pool = pool.concat(promptPool[i][1]);
+				returnPool = returnPool.concat(promptPool[i][1]);
 			}
 		}
 	}
 
-	return pool;
+	return returnPool;
 }
 
-function promptPopup() { //occurrs when new prompt button is pressed
+function promptPopup() { // occurrs when new prompt button is pressed
 	let pool = getPool();
-	prompt = pool[Math.floor(Math.random() * pool.length)];
+	let temp = pool[Math.floor(Math.random() * pool.length)]	// check dupes
+
+	while (temp == prompt) {
+		temp = pool[Math.floor(Math.random() * pool.length)]
+	}
+ 
+	prompt = temp;
 	localStorage.prompt = prompt;
 
 	let params = `scrollbars=no, resizable=no, status=no, location=no,
