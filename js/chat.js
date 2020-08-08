@@ -6,8 +6,10 @@ var client = new tmi.Client({
 	channels: [""]
 });
 
+const winAudio = new Audio("assets/audio/win.mp3");
+const loseAudio =  new Audio("assets/audio/lose.mp3");
 var paused = false;
-var prompt;
+var prompt = "";
 client.connect();
 
 client.on('message', (channel, tags, message, self) => {
@@ -33,6 +35,7 @@ jQuery("#channel-textfield").on("input propertychange paste", function() {
 		if (paused != true) {
 			if (message.toUpperCase() == prompt.toUpperCase()) {
 				document.getElementById("message-container").style.background = "var(--light-twitch)";
+				winAudio.play();
 				paused = true;
 			}
 			document.getElementById("user-name").innerHTML = 
