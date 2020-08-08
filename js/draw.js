@@ -45,17 +45,24 @@ document.getElementById("garbage-tool").draggable = false;
 // Initial canvas options
 
 ctx.lineWidth = strokeWidths[1];
-document.getElementById("size1").style.filter="brightness(0.7)";
 var currentTool = 0;
 var currentColor = colors["black"];
+document.getElementById("size1").style.filter="brightness(0.7)";
+document.getElementById("pencil-tool").style.background = currentColor;
 
 // Toolbar
 
 function changeColor(id) {
-	if (currentTool != 1) {
-		ctx.strokeStyle = colors[id.substring(0, id.indexOf("-button"))];
-	}
+	currentTool = 0;
 	currentColor = colors[id.substring(0, id.indexOf("-button"))];
+	ctx.strokeStyle = currentColor;
+
+	let array = document.getElementsByClassName("drawing-tool");
+	for (i = 0; i < array.length; i++) {
+		array[i].style.background = "white";
+	}
+
+	document.getElementById("pencil-tool").style.background = currentColor;
 }
 
 function changeStrokeWidth(id) {
@@ -70,22 +77,23 @@ function changeStrokeWidth(id) {
 }
 
 function changeTool(id) {
-	if (id == "pencil-tool") {
-		currentTool = 0;
-		ctx.strokeStyle = currentColor;
-	} else if (id == "eraser-tool") {
-		currentTool = 1;
-		ctx.strokeStyle = colors["white"];
-	} else {
-		currentTool = 2;
-	}
-
 	let array = document.getElementsByClassName("drawing-tool");
 	for (i = 0; i < array.length; i++) {
 		array[i].style.background = "white";
 	}
 
 	document.getElementById(id).style.background = "var(--light-twitch)";
+
+	if (id == "pencil-tool") {
+		currentTool = 0;
+		ctx.strokeStyle = currentColor;
+		document.getElementById("pencil-tool").style.background = currentColor;
+	} else if (id == "eraser-tool") {
+		currentTool = 1;
+		ctx.strokeStyle = colors["white"];
+	} else {
+		currentTool = 2;
+	}
 }
 
 function clearCanvas() {
