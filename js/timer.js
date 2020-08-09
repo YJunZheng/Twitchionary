@@ -11,7 +11,7 @@ function tick() {
 		stopTimer();
 		loseAudio.play();
 
-		document.getElementById("message-container").style.background = "var(--dark-gray)";
+		document.getElementById("message-container").style.background = "gray";
 		document.getElementById("user-name").innerHTML = "The Prompt Was: " + prompt;
 		document.getElementById("user-message").innerHTML = "";
 	}

@@ -49,3 +49,8 @@ function promptPopup() { // occurrs when new prompt button is pressed
 
 	promptWindow = window.open('prompt window.html', "Prompt Window", params);
 }
+
+function resetGame() {
+	stopTimer();
+	clearCanvas();
+}
