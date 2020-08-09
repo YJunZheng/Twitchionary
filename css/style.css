@@ -186,68 +186,68 @@ button:hover  {
 	transform: scale(1.1);
 }
 
-#red-button {
-	background-color: var(--red);
+#color1-button {
+	background-color: var(--color1);
 }
 
-#orange-button {
-	background-color: var(--orange);
+#color2-button {
+	background-color: var(--color2);
 }
 
-#yellow-button {
-	background-color: var(--yellow);
+#color3-button {
+	background-color: var(--color3);
 }
 
-#green-button {
-	background-color: var(--green);
+#color4-button {
+	background-color: var(--color4);
 }
 
-#blue-button {
-	background-color: var(--blue);
+#color5-button {
+	background-color: var(--color5);
 }
 
-#purple-button {
-	background-color: var(--purple);
+#color6-button {
+	background-color: var(--color6);
 }
 
-#white-button {
-	background-color: var(--white);
+#color7-button {
+	background-color: var(--color7);
 }
 
-#dark-gray-button {
-	background-color: var(--dark-gray);
+#color8-button {
+	background-color: var(--color8);
 }
 
-#dark-red-button {
-	background-color: var(--dark-red);
+#color9-button {
+	background-color: var(--color9);
 }
 
-#dark-orange-button {
-	background-color: var(--dark-orange);
+#color10-button {
+	background-color: var(--color10);
 }
 
-#dark-yellow-button {
-	background-color: var(--dark-yellow);
+#color11-button {
+	background-color: var(--color11);
 }
 
-#dark-green-button {
-	background-color: var(--dark-green);
+#color12-button {
+	background-color: var(--color12);
 }
 
-#dark-blue-button {
-	background-color: var(--dark-blue);
+#color13-button {
+	background-color: var(--color13);
 }
 
-#dark-purple-button {
-	background-color: var(--dark-purple);
+#color14-button {
+	background-color: var(--color14);
 }
 
-#gray-button {
-	background-color: var(--gray);
+#color15-button {
+	background-color: var(--color15);
 }
 
-#black-button {
-	background-color: var(--black);
+#color16-button {
+	background-color: var(--color16);
 }
 
 /* ================ Side Panel =============== */
@@ -530,20 +530,21 @@ footer a {
 	--muted-green: #64ff64;
 	--muted-blue: #6464ff;
 
-	--red: #FF0000;
-	--orange: #FFA500;
-	--yellow: #FFFF00;
-	--green: #00FF00;
-	--blue: #0000FF;
-	--purple: #800080;
-	--gray: #C0C0C0;
-	--black: #000000;
-	--dark-red: #8B0000;
-	--dark-orange: #8B4513;
-	--dark-yellow: #BDB76B;
-	--dark-green: #006400;
-	--dark-blue: #000080;
-	--dark-purple: #4B0082;
-	--dark-gray: #696969;
-	--white: #ffffff;
+	--color1: #DC143C;
+	--color2: #FF8C00;
+	--color3: #FFD700;
+	--color4: #32CD32;
+	--color5: #00CED1;
+	--color6: #EE82EE;
+	--color7: #ffffff;
+	--color8: #696969;
+	
+	--color9: #8b0000;
+	--color10: #8B4513;
+	--color11: #D2B48C;
+	--color12: #006400;
+	--color13: #0000CD;
+	--color14: #4B0082;
+	--color15: #C0C0C0;
+	--color16: #000000;
 };

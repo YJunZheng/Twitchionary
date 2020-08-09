@@ -15,25 +15,14 @@ ctx.lineJoin = "round";
 var mouse = {x: 0, y: 0}; // Intialize object to store mouse position
 var mousePressed; // Boolean that checks if mouse is pressed or not to allow drawing
 
-const strokeWidths = [2, 8, 16, 32];
-const colors = {
-	"red" : "#FF0000",
-	"orange" : "#FFA500",
-	"yellow" : "#FFFF00",
-	"green" : "#00FF00",
-	"blue" : "#0000FF",
-	"purple" : "#800080",
-	"gray" : "#C0C0C0",
-	"black" : "#000000",
-	"dark-red" : "#8B0000",
-	"dark-orange" : "#8B4513",
-	"dark-yellow" : "#BDB76B",
-	"dark-green" : "#006400",
-	"dark-blue" : "#000080",
-	"dark-purple" : "#4B0082",
-	"dark-gray" : "#696969",
-	"white" : "#ffffff"
-};
+const strokeWidths = [1, 5, 15, 30];
+var colors = {"black" : "#000000", "white" : "#FFFFFF"};
+
+for (i = 1; i < 17; i++) {
+	colors["color" + i.toString()] = getComputedStyle(document.getElementsByTagName("BODY")[0]).getPropertyValue("--color" + i.toString());
+}
+
+console.log(colors);
 
 // set images undraggable
 
@@ -47,7 +36,7 @@ document.getElementById("garbage-tool").draggable = false;
 // Initial canvas options
 
 ctx.lineWidth = strokeWidths[1];
-var currentTool = 0;
+var currentTool = 0;	// 0 = pencil, 1 = eraser, 2 = bucket
 var currentColor = colors["black"];
 document.getElementById("size1").style.filter="brightness(0.7)";
 document.getElementById("pencil-tool").style.background = currentColor;
@@ -55,16 +44,20 @@ document.getElementById("pencil-tool").style.background = currentColor;
 // Toolbar
 
 function changeColor(id) {
-	currentTool = 0;
 	currentColor = colors[id.substring(0, id.indexOf("-button"))];
 	ctx.strokeStyle = currentColor;
+	ctx.fillStyle = currentColor;
 
 	let array = document.getElementsByClassName("drawing-tool");
 	for (i = 0; i < array.length; i++) {
 		array[i].style.background = "white";
 	}
 
-	document.getElementById("pencil-tool").style.background = currentColor;
+	if (currentTool != 2) {
+		document.getElementById("pencil-tool").style.background = currentColor;
+	} else {
+		document.getElementById("bucket-tool").style.background = currentColor;
+	}
 }
 
 function changeStrokeWidth(id) {
@@ -95,6 +88,7 @@ function changeTool(id) {
 		ctx.strokeStyle = colors["white"];
 	} else {
 		currentTool = 2;
+		document.getElementById("bucket-tool").style.background = currentColor;
 	}
 }
 
@@ -105,6 +99,9 @@ function clearCanvas() {
 function canvasMouseOut() {
 	mousePressed = false;
 }
+
+// Bucket Tool (http://www.williammalone.com/articles/html5-canvas-javascript-paint-bucket-tool/)
+
 
 // Basic canvas drawing
 
@@ -118,9 +115,13 @@ $('#canvas').mousedown(function start(e) {
 	mouse.x = ogWidth / width * (e.pageX - $('#canvas').offset().left); //Get position of mouse
 	mouse.y = ogHeight / height * (e.pageY - $('#canvas').offset().top); //Offset is offset from the parent element, as part of this. 
 
-	ctx.beginPath();
-	ctx.lineTo(mouse.x, mouse.y); // Draw a line from where the path last started to where the mouse is
-	ctx.stroke(); // Draw a stroke from the two locations
+	if (currentTool != 2) {
+		ctx.beginPath();
+		ctx.lineTo(mouse.x, mouse.y); // Draw a line from where the path last started to where the mouse is
+		ctx.stroke(); // Draw a stroke from the two locations
+	} else {
+		floodFill(canvas, mouse.x, mouse.y, currentColor, 80);
+	}
 })
 
 $('#canvas').mouseup (()=> {
@@ -128,19 +129,12 @@ $('#canvas').mouseup (()=> {
 })
 
 $('#canvas').mousemove(function move(e) {
-	if (currentTool != 2) {	// Pencil Tool
+	mouse.x = ogWidth / width * (e.pageX - $('#canvas').offset().left); //Get position of mouse
+	mouse.y = ogHeight / height * (e.pageY - $('#canvas').offset().top); //Offset is offset from the parent element, as part of this. 
+	if (currentTool != 2) {	// if not paint bucket (weird things start happening if you dont put this check)
 		if (mousePressed){
-			mouse.x = ogWidth / width * (e.pageX - $('#canvas').offset().left); //Get position of mouse
-			mouse.y = ogHeight / height * (e.pageY - $('#canvas').offset().top); //Offset is offset from the parent element, as part of this. 
-		
 			ctx.lineTo(mouse.x, mouse.y); // Draw a line from where the path last started to where the mouse is
 			ctx.stroke(); // Draw a stroke from the two locations
 		}
-	} else {	// Bucket tool
 	}
 })
-
-if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1){
-	document.getElementById("colors-container").style.top = "-13px";
-	document.getElementById("tools-container").style.paddingTop = "20px";
-}
