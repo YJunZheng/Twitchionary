@@ -9,6 +9,8 @@ const ogHeight = maxSize["y"];
 const ogWidth = maxSize["x"];
 canvas.height = maxSize["y"];
 canvas.width = maxSize["x"]; // Define height and width as whole browser, then set as canvas
+ctx.lineCap = "round";
+ctx.lineJoin = "round";
 
 var mouse = {x: 0, y: 0}; // Intialize object to store mouse position
 var mousePressed; // Boolean that checks if mouse is pressed or not to allow drawing
@@ -100,6 +102,10 @@ function clearCanvas() {
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
+function canvasMouseOut() {
+	mousePressed = false;
+}
+
 // Basic canvas drawing
 
 $(window).resize(function() {
@@ -107,9 +113,14 @@ $(window).resize(function() {
 	width = $('#drawing-container').width();
 })
 
-$('#canvas').mousedown (()=> {
+$('#canvas').mousedown(function start(e) {
 	mousePressed = true;
-	ctx.beginPath(); // If mouse is presssed, starts a path at that location
+	mouse.x = ogWidth / width * (e.pageX - $('#canvas').offset().left); //Get position of mouse
+	mouse.y = ogHeight / height * (e.pageY - $('#canvas').offset().top); //Offset is offset from the parent element, as part of this. 
+
+	ctx.beginPath();
+	ctx.lineTo(mouse.x, mouse.y); // Draw a line from where the path last started to where the mouse is
+	ctx.stroke(); // Draw a stroke from the two locations
 })
 
 $('#canvas').mouseup (()=> {
