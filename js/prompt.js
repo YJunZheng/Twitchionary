@@ -29,6 +29,11 @@ function getPool() {	// get the current pool of keywords
 
 function promptPopup() { // occurrs when new prompt button is pressed
 	paused = false;
+
+	// reset timer
+	startTimer();
+	clearCanvas();
+
 	document.getElementById("message-container").style.background = "var(--twitch)";
 	let temp = pool[Math.floor(Math.random() * pool.length)]	// check dupes
 

@@ -75,6 +75,20 @@ button:hover  {
 	height: 100%;
 }
 
+/* --------------- Timer Stuff --------------- */
+
+#timer-container {
+	font-size: 24px;
+	font-weight: bold;
+	color: white;
+	background-color: var(--twitch);
+	width: 60px;
+	border-bottom-right-radius: 20px;
+	padding: 10px;
+	padding-left: 0;
+	position: absolute;
+}
+
 /* -------------- Drawing Tools -------------- */
 
 #tools-container {

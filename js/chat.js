@@ -33,10 +33,10 @@ jQuery("#channel-textfield").on("input propertychange paste", function() {
 
 	client.on('message', (channel, tags, message, self) => {
 		if (paused != true) {
-			if (message.toUpperCase() == prompt.toUpperCase()) {
+			if (message.toUpperCase() == prompt.toUpperCase()) {	// if someone wins
+				stopTimer();
 				document.getElementById("message-container").style.background = "var(--light-twitch)";
 				winAudio.play();
-				paused = true;
 			}
 			document.getElementById("user-name").innerHTML = 
 				tags['display-name'] + ": ";
