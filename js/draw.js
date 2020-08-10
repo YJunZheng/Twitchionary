@@ -22,8 +22,6 @@ for (i = 1; i < 17; i++) {
 	colors["color" + i.toString()] = getComputedStyle(document.getElementsByTagName("BODY")[0]).getPropertyValue("--color" + i.toString());
 }
 
-console.log(colors);
-
 // set images undraggable
 
 let drawingTools = document.getElementsByClassName("drawing-tool");

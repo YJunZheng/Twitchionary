@@ -1,5 +1,6 @@
 var promptWindow;
 var pool = getPool();
+var promptAll = ""; // includes the whole line with alts
 localStorage.promptVisibility = "false";
 
 function updatePromptPool(id) {	// updates prompt pool
@@ -35,13 +36,22 @@ function promptPopup() { // occurrs when new prompt button is pressed
 	clearCanvas();
 
 	document.getElementById("message-container").style.background = "var(--twitch)";
-	let temp = pool[Math.floor(Math.random() * pool.length)]	// check dupes
+	let temp = pool[Math.floor(Math.random() * pool.length)];	// check dupes
 
-	while (temp == prompt) {
-		temp = pool[Math.floor(Math.random() * pool.length)]
+	while (temp == promptAll) {
+		temp = pool[Math.floor(Math.random() * pool.length)];
 	}
- 
-	prompt = temp;
+
+ 	promptAll = temp; // checks dupes next iteration
+
+ 	if (temp.includes(";")) {
+ 		prompt = temp.slice(0, temp.indexOf(";"));
+ 		promptAlts = temp.slice(temp.indexOf(";") + 1, temp.length).split(";");
+ 	} else {
+ 		prompt = temp;
+ 		promptAlts = [];
+ 	}
+	
 	localStorage.prompt = prompt;
 
 	let params = `scrollbars=no, resizable=no, status=no, location=no,
