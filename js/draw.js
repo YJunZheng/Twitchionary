@@ -15,7 +15,7 @@ ctx.lineJoin = "round";
 var mouse = {x: 0, y: 0}; // Intialize object to store mouse position
 var mousePressed; // Boolean that checks if mouse is pressed or not to allow drawing
 
-const strokeWidths = [1, 8, 22, 38];
+const strokeWidths = [1, 8, 16, 32];
 var strokeIndex = 1;
 var colors = {"black" : "#000000", "white" : "#FFFFFF"};
 
