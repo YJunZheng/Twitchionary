@@ -18,6 +18,7 @@ var mousePressed; // Boolean that checks if mouse is pressed or not to allow dra
 const strokeWidths = [1, 8, 16, 32];
 var strokeIndex = 1;
 var colors = {"black" : "#000000", "white" : "#FFFFFF"};
+clearCanvas();
 
 //Hold current RGB values for paint bucket tool
 currentRGB = {
@@ -135,7 +136,8 @@ function changeTool(id) {
 }
 
 function clearCanvas() {
-	ctx.clearRect(0, 0, canvas.width, canvas.height);
+	ctx.fillStyle = colors["white"];
+	ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
 function canvasMouseOut() {
