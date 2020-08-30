@@ -18,8 +18,33 @@ var mousePressed; // Boolean that checks if mouse is pressed or not to allow dra
 const strokeWidths = [1, 5, 15, 30];
 var colors = {"black" : "#000000", "white" : "#FFFFFF"};
 
+currentRGB = {
+	r: 0, 
+	g: 0,
+	b:0
+}
+
+
 for (i = 1; i < 17; i++) {
 	colors["color" + i.toString()] = getComputedStyle(document.getElementsByTagName("BODY")[0]).getPropertyValue("--color" + i.toString());
+}
+
+//Hex-to-RGB converter
+
+function hex(currentColorString) {
+	var Rstring = currentColorString.slice(2, 4)
+	var Gstring = currentColorString.slice(4, 6)
+	var Bstring = currentColorString.slice(6, 8)
+	
+	var R = Number.parseInt(Rstring, 16)
+	var G = Number.parseInt(Gstring, 16)
+	var B = Number.parseInt(Bstring, 16)
+
+	return ({
+		r: R,
+		g: G,
+		b: B
+	})
 }
 
 // set images undraggable
@@ -45,6 +70,8 @@ function changeColor(id) {
 	currentColor = colors[id.substring(0, id.indexOf("-button"))];
 	ctx.strokeStyle = currentColor;
 	ctx.fillStyle = currentColor;
+	currentRGB = hex(currentColor)
+	console.log(currentRGB)
 
 	let array = document.getElementsByClassName("drawing-tool");
 	for (i = 0; i < array.length; i++) {
@@ -100,6 +127,97 @@ function canvasMouseOut() {
 
 // Bucket Tool (http://www.williammalone.com/articles/html5-canvas-javascript-paint-bucket-tool/)
 
+function getPixelPos(x,y) {
+	return (y * canvas.width + x) * 4
+}
+
+function matchStartColor(data, pos, startColor) {
+	return (
+		data[pos] === startColor.r &&
+		data[pos+1] === startColor.g &&
+		data[pos+2] === startColor.b &&
+		data[pos+3] === startColor.a
+	)
+}
+
+function colorPixel(data, pos, color) {
+	data[pos] = color.r || 0
+	data[pos+1] = color.g || 0
+	data[pos+2] = color.b || 0
+	data[pos+3] = color.hasOwnProperty("a") ? color.a : 255
+}
+
+function fill(startX, startY, fillColor) {
+	var img = ctx.getImageData(0, 0, canvas.width, canvas.height)
+
+	var startPos = getPixelPos(startX, startY)
+	var startColor = {
+		r: img.data[startPos],
+		g: img.data[startPos+1],
+		b: img.data[startPos+2],
+		a: img.data[startPos+3]
+	}
+
+	if (startColor.r==fillColor.r && startColor.g==fillColor.g && startColor.b==fillColor.b)
+	{
+		
+		return
+	}
+	var pixelStack = [[startX, startY]]
+
+	while(pixelStack.length > 0) {
+		var currPos = pixelStack.pop()
+		var x = currPos[0]
+		var y = currPos[1]
+		var currPixPos = getPixelPos(x, y)
+
+		while (y-- >= 0 && matchStartColor(img.data, currPixPos, startColor)) 
+		{
+			currPixPos -= canvas.width * 4
+		}
+
+		currPixPos += canvas.width * 4
+		++y
+		var reachLeft = false
+		var reachRight = false
+
+		while(y++ < canvas.height-1 && matchStartColor(img.data, currPixPos, startColor))
+		{
+			colorPixel(img.data, currPixPos, fillColor)
+		
+
+		if (x>0) {
+			if (matchStartColor(img.data, currPixPos-4, startColor) && !reachLeft) 
+			{
+				pixelStack.push([x-1, y])
+				reachLeft=true
+			}
+
+			else if(reachLeft) {
+				reachLeft=false
+			}
+		}
+
+		if (x < canvas.width-1) {
+			if (matchStartColor(img.data, currPixPos+4, startColor) && !reachLeft) {
+				pixelStack.push([x+1, y])
+				reachRight=true
+			}
+			else if (reachRight) {
+				reachRight=false
+			}
+		}
+
+		currPixPos+= canvas.width * 4
+	}
+	}
+
+	ctx.putImageData(img, 0, 0)
+
+}
+
+
+
 
 // Basic canvas drawing
 
@@ -117,12 +235,20 @@ $('#canvas').mousedown(function start(e) {
 		ctx.beginPath();
 		ctx.lineTo(mouse.x, mouse.y); // Draw a line from where the path last started to where the mouse is
 		ctx.stroke(); // Draw a stroke from the two locations
-	} else {
-		floodFill(canvas, mouse.x, mouse.y, currentColor, 80);
+	} 
+
+	if (currentTool==2) {
+		x = Math.trunc(mouse.x)
+		y = Math.trunc(mouse.y)
+	
+	fill(x, y , currentRGB)
 	}
 })
 
 $('#canvas').mouseup (()=> {
+	if (currentTool==1) {
+		ctx.closePath()
+	}
 	mousePressed = false; // Stops drwaing
 })
 
