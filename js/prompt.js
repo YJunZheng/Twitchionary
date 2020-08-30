@@ -61,6 +61,11 @@ function promptPopup() { // occurrs when new prompt button is pressed
 }
 
 function resetGame() {
+	document.getElementById("message-container").style.background = "var(--twitch)";
+	document.getElementById("user-name").innerHTML = "";
+	document.getElementById("user-message").innerHTML = "Press New Prompt to Continue";
+
+
 	stopTimer();
 	clearCanvas();
 }
