@@ -15,7 +15,8 @@ ctx.lineJoin = "round";
 var mouse = {x: 0, y: 0}; // Intialize object to store mouse position
 var mousePressed; // Boolean that checks if mouse is pressed or not to allow drawing
 
-const strokeWidths = [1, 5, 15, 30];
+const strokeWidths = [1, 8, 16, 32];
+var strokeIndex = 1;
 var colors = {"black" : "#000000", "white" : "#FFFFFF"};
 
 currentRGB = {
@@ -58,7 +59,11 @@ document.getElementById("garbage-tool").draggable = false;
 
 // Initial canvas options
 
-ctx.lineWidth = strokeWidths[1];
+document.getElementById("canvas").style.cursor = `url("assets/cursors/size`
+	+ strokeIndex + `.cur"), default`;
+document.getElementById("canvas").setAttribute("onmouseout", "canvasMouseOut()")
+
+ctx.lineWidth = strokeWidths[strokeIndex];
 var currentTool = 0;	// 0 = pencil, 1 = eraser, 2 = bucket
 var currentColor = colors["black"];
 document.getElementById("size1").style.filter="brightness(0.7)";
@@ -86,7 +91,13 @@ function changeColor(id) {
 }
 
 function changeStrokeWidth(id) {
-	ctx.lineWidth = strokeWidths[id.substring(4, id.length)];
+	strokeIndex = id.substring(4, id.length);
+	ctx.lineWidth = strokeWidths[strokeIndex];
+
+	if (currentTool !== 2) {
+		document.getElementById("canvas").style.cursor = `url("assets/cursors/size`
+			+ strokeIndex + `.cur"), default`;
+	}
 
 	let array = document.getElementsByClassName("tool-size");
 	for (i = 0; i < array.length; i++) {
@@ -105,13 +116,18 @@ function changeTool(id) {
 	document.getElementById(id).style.background = "var(--light-twitch)";
 
 	if (id == "pencil-tool") {
+		document.getElementById("canvas").style.cursor = `url("assets/cursors/size`
+			+ strokeIndex + `.cur"), default`;		
 		currentTool = 0;
 		ctx.strokeStyle = currentColor;
 		document.getElementById("pencil-tool").style.background = currentColor;
 	} else if (id == "eraser-tool") {
+		document.getElementById("canvas").style.cursor = `url("assets/cursors/size`
+			+ strokeIndex + `.cur"), default`;
 		currentTool = 1;
 		ctx.strokeStyle = colors["white"];
 	} else {
+		document.getElementById("canvas").style.cursor = `url("assets/cursors/bucket.cur"), default`;
 		currentTool = 2;
 		document.getElementById("bucket-tool").style.background = currentColor;
 	}
@@ -253,10 +269,10 @@ $('#canvas').mouseup (()=> {
 })
 
 $('#canvas').mousemove(function move(e) {
-	mouse.x = ogWidth / width * (e.pageX - $('#canvas').offset().left); //Get position of mouse
-	mouse.y = ogHeight / height * (e.pageY - $('#canvas').offset().top); //Offset is offset from the parent element, as part of this. 
 	if (currentTool != 2) {	// if not paint bucket (weird things start happening if you dont put this check)
 		if (mousePressed){
+			mouse.x = ogWidth / width * (e.pageX - $('#canvas').offset().left); //Get position of mouse
+			mouse.y = ogHeight / height * (e.pageY - $('#canvas').offset().top); //Offset is offset from the parent element, as part of this. 
 			ctx.lineTo(mouse.x, mouse.y); // Draw a line from where the path last started to where the mouse is
 			ctx.stroke(); // Draw a stroke from the two locations
 		}
