@@ -93,9 +93,24 @@
 			</div>
 		</div>
 		<footer>
-			<p>There's No Uber In Kansas</p>
+			<button id="htp-button">How To Play</button>
 			<p>Github: <a target="blank" href="https://github.com/JunZheng-dev/Twitch-Pictionary">Twitchionary</a></p>
 		</footer>
+
+		<!-- HOW TO PLAY MODAL -->
+		<div id="htpModal" class="modal">
+			<div class="modal-content">
+				<span class="close">&times;</span>
+				<header>How To Play</header>
+				<div id="modal-instructions">
+					<p><b>1.</b> Enter your twitch channel in the side panel.</p>
+					<p><b>2.</b> Choose your prompts and the time alloted. The time left is shown on the top left of the canvas.</p>
+					<p><b>3.</b> Press the new prompt button to get a prompt.</p>
+					<p><b>4.</b> Draw while chat tries to guess!</p>
+				</div>
+				<footer>There's no uber in kansas</footer>
+			</div>
+		</div>
 	</body>
 	<script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
 	<script type="text/javascript" src="js/tmi.js"></script>
@@ -104,5 +119,6 @@
 	<script type="text/javascript" src="js/chat.js"></script>
 	<script type="text/javascript" src="js/timer.js"></script>
 	<script type="text/javascript" src="js/prompt.js"></script>
+	<script type="text/javascript" src="js/how-to-play.js"></script>
 	<script type="text/javascript" src="js/draw.js"></script>
 </html>
