@@ -16,6 +16,7 @@ client.connect();
 function winGame() {
 	stopTimer();
 	document.getElementById("message-container").style.background = "var(--light-twitch)";
+	confetti();
 	winAudio.play();
 }
 
