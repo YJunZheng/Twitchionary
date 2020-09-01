@@ -520,8 +520,9 @@ footer a {
 	border: 10px solid var(--twitch);
 	border-radius: 10px;
 
-	margin: 200px auto 0 auto;
+	margin: 200px auto 50px auto;
 	width: 800px;
+	border-bottom: 30px solid var(--twitch);
 }
 
 .modal-content header {
